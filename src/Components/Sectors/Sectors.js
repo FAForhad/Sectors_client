@@ -7,7 +7,7 @@ const Sectors = () => {
     const { data: sectors = [], refetch } = useQuery({
         queryKey: ['sectors'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/sectors`)
+            const res = await fetch(`https://task-1-server-sigma.vercel.app/sectors`)
             const data = await res.json()
             return data
         }
@@ -31,7 +31,7 @@ const Sectors = () => {
             sector: sector,
             term: checkbox
         }
-        fetch('http://localhost:5000/storeSector', {
+        fetch('https://task-1-server-sigma.vercel.app/storeSector', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -60,10 +60,10 @@ const Sectors = () => {
     return (
         <div>
             <section id='sectors'>
-                <div class="mx-auto max-w-screen-2xl px-4 py-16 sm:px-6 lg:px-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-2">
-                        <div class="relative z-10 lg:py-16">
-                            <div class="relative h-64 sm:h-80 lg:h-full">
+                <div className="mx-auto max-w-screen-2xl px-4 py-16 sm:px-6 lg:px-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2">
+                        <div className="relative z-10 lg:py-16">
+                            <div className="relative h-64 sm:h-80 lg:h-full">
                                 <form onSubmit={storeData}>
                                     <div className="mb-1 sm:mb-2">
                                         <label
@@ -104,18 +104,18 @@ const Sectors = () => {
                                         </select>
                                     </div>
 
-                                    <div class="form-group form-check mb-6">
+                                    <div className="form-group form-check mb-6">
                                         <input
                                             onChange={handleChecked}
                                             type="checkbox"
-                                            class=" appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-rose-600 checked:border-rose-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                            className=" appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-rose-600 checked:border-rose-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                                             id="exampleCheck1"
                                             value={
                                                 checked ? 'Agree to terms' : 'Not Agreed'
                                             }
                                             name='checkbox'
                                         />
-                                        <label class="form-check-label inline-block text-gray-800" for="exampleCheck1">Agree to terms</label>
+                                        <label className="form-check-label inline-block text-gray-800" for="exampleCheck1">Agree to terms</label>
                                     </div>
 
                                     <div className="mt-4 mb-2 sm:mb-4">
@@ -130,16 +130,16 @@ const Sectors = () => {
                             </div>
                         </div>
 
-                        <div class="relative flex items-center bg-gray-100 lg:mt-2 mt-24">
+                        <div className="relative flex items-center bg-gray-100 lg:mt-2 mt-24">
                             <span
-                                class="hidden lg:absolute lg:inset-y-0 lg:-left-16 lg:block lg:w-16 lg:bg-gray-100"
+                                className="hidden lg:absolute lg:inset-y-0 lg:-left-16 lg:block lg:w-16 lg:bg-gray-100"
                             ></span>
 
-                            <div class="p-8 sm:p-16 lg:p-24">
-                                <h2 class="text-4xl font-bold sm:text-5xl  text-rose-700">
+                            <div className="p-8 sm:p-16 lg:p-24">
+                                <h2 className="text-4xl font-bold sm:text-5xl  text-rose-700">
                                     Sectors
                                 </h2>
-                                <h2 class="text-2xl font-bold sm:text-3xl">
+                                <h2 className="text-2xl font-bold sm:text-3xl">
                                     Please enter your name and pick the Sectors you are currently involved in.
 
                                 </h2>
@@ -147,7 +147,7 @@ const Sectors = () => {
 
                                 <a
                                     href='#ensures'
-                                    class="mt-8 inline-block rounded border border-rose-600 bg-rose-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-rose-600 focus:outline-none focus:ring active:text-rose-500"
+                                    className="mt-8 inline-block rounded border border-rose-600 bg-rose-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-rose-600 focus:outline-none focus:ring active:text-rose-500"
                                 >
                                     Ensures
                                 </a>
