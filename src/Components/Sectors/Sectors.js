@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
 
 const Sectors = () => {
 
-    const { data: sectors = [] } = useQuery({
+    const { data: sectors = [], refetch } = useQuery({
         queryKey: ['sectors'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/sectors`)
@@ -23,12 +24,39 @@ const Sectors = () => {
         event.preventDefault()
         const form = event.target;
         const name = form.name.value;
-        const select = form.select.value;
+        const sector = form.select.value;
         const checkbox = form.checkbox.value;
-        console.log(name, select, checkbox)
+        const sectors = {
+            name: name,
+            sector: sector,
+            term: checkbox
+        }
+        fetch('http://localhost:5000/storeSector', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(sectors)
+        })
+            .then(data => {
+                console.log(data)
+                toast.success('Your Post Added', {
+                    style: {
+                        border: '1px solid #713200',
+                        padding: '16px',
+                        color: '#713200',
+                    },
+                    iconTheme: {
+                        primary: '#713200',
+                        secondary: '#FFFAEE',
+                    },
+                })
+                form.reset()
+                refetch()
+            })
+            .catch(error => console.error(error))
     }
 
-    console.log(sectors)
     return (
         <div>
             <section id='sectors'>
