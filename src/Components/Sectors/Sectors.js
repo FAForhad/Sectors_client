@@ -146,9 +146,10 @@ const Sectors = () => {
 
 
                                 <a
+                                    href='#ensures'
                                     class="mt-8 inline-block rounded border border-rose-600 bg-rose-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-rose-600 focus:outline-none focus:ring active:text-rose-500"
                                 >
-                                    Get in Touch
+                                    Ensures
                                 </a>
                             </div>
                         </div>
